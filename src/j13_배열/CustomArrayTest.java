@@ -9,9 +9,18 @@ public class CustomArrayTest {
         // String[] stra = new String[0];
         // System.out.println(stra.length);
 
-        UserArray userArray = new UserArray(new CustomArray());
+        /**
+         * CustomArray : just 문자열 담는 array 
+         * UserArray : CustomArray 에서 담은 문자열들을 다 저장해놓은 것 
+         */
+
+        // 사용자 정보, 추가 등 가능
+        CustomArray array = new CustomArray();
+        UserArray userArray = new UserArray(array);
+        // UserArray userArray = new UserArray(new CustomArray());
         // UserArray -> CustomArray 까지 생성
 
+        // 배열 공유하려면
         Scanner scanner = new Scanner(System.in);
 
         while(true){
@@ -52,8 +61,6 @@ public class CustomArrayTest {
             }
 
             System.out.println("프로그램이 종료되었습니다.");
-
-
         }
 
     }
