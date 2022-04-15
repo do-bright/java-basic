@@ -24,6 +24,11 @@ public class AbstractTest {
                 System.out.println("동물이 움직입니다.");
             }
 
+            @Override
+            public void eat() {
+                
+            }
+
         };   
         
         Eagle eagle1 = new Eagle();
