@@ -16,14 +16,14 @@ public class Signin {
     // private String password="1234";
 
     // public Message<Integer,User> sendSigninMessage(boolean flag){
-    public Message<Integer,?> sendSigninMessage(boolean flag){// 와일드 카드 ? 로해서 타입 확정안함 
+    public Message<Integer,? extends User> sendSigninMessage(boolean flag){// 와일드 카드 ? 로해서 타입 확정안함 
         if(flag==true){
-            Message<Integer,User> messagee = new Message<Integer,User>();
+            Message<Integer,User> message = new Message<Integer,User>();
             message.setCode(200);
             message.setData(dbUser);
             return message;
         }else{
-            Message<Integer,String> messagee = new Message<Integer,String>();
+            Message<Integer,String> message = new Message<Integer,String>();
             message.setCode(400);
             message.setData("로그인 실패. \n 아이디와 비밀번호를 확인해주세요!");
             return message; // return String message랑 함수 return 타입 User랑 불일치 
