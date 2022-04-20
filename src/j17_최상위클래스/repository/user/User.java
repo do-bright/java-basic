@@ -12,4 +12,20 @@ public class User {
     private String name;
     private String email;
 
+    public static User builder() {
+        return new User();
+    }
+
+    public void username (String username) {
+        this.username = username;
+        return this;
+    }
+
+    public void password (String password) {
+        this.password = password;
+        return this;
+    }
+
+    //User.builder().username("haeseon").password("1234"); // 빌드패턴
+
 }

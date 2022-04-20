@@ -1,0 +1,3 @@
+{
+  "java.jdt.ls.vmargs": "-javaagent:/Users/do.bright_/.vscode/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar -Xbootclasspath/a:/Users/do.bright_/.vscode/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar"
+}

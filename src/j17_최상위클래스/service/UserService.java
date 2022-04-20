@@ -7,7 +7,7 @@ public interface UserService {
 
     public User addUser(Scanner scanner);
 
-    public User getUserByUserName(String username);
+    public User getUserByUserName(Scanner scanner);
     // username을 가지고 user 찾음
 
     public User[] getUserAll();

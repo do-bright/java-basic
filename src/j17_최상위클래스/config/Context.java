@@ -3,6 +3,7 @@ package j17_최상위클래스.config;
 import java.util.Scanner;
 
 import j17_최상위클래스.controller.MainController;
+import j17_최상위클래스.repository.UserArray;
 import j17_최상위클래스.service.UserServicelmpl;
 
 @Getter
@@ -14,18 +15,16 @@ public class Context {
     private UserService userService;
 
     private Context() {
-
-    }
-
-    public void setting() {
         // 일반 객체
         scanner = new Scanner(System.in);
 
+        UserArray userArray = new UserArray();
+
         // 서비스 객체
-        userService = new UserServicelmpl();
+        userService = new UserServicelmpl(userArray);
 
         // 컨트롤러 객체
-        mainController = new MainController(instance, userService);
+        mainController = new MainController(userService);
     }
 
     public static Context getInstance() {
@@ -33,6 +32,10 @@ public class Context {
             instance = new Context();
         }
         return instance;
+    }
+
+    public Scanner getScanner() {
+        return null;
     }
 
 }
