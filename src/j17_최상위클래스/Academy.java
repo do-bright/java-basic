@@ -1,14 +1,21 @@
 package j17_최상위클래스;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Builder
-@RequiredArgsCOnstructor()
+@RequiredArgsConstructor
 @NoArgsConstructor // 기본생성자
 @AllArgsConstructor // 전체 생성자
 @Getter
 @Setter
-@EqulasAndHashCode //
+@EqualsAndHashCode //
 @ToString
 
 public class Academy {

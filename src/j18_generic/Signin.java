@@ -1,12 +1,13 @@
 package j18_generic;
 import j17_최상위클래스.repository.user.User;
+import lombok.Getter;
 
 @Getter
 public class Signin {
     private User dbUser;
 
     public Signin(){
-        dbUser=User.builder() // user안에 builder 있으ㅡㅁ
+        dbUser=User.builder() // user안에 builder 있음
         .username("haeseon")
         .password("1234")
         .email("1234@naver.com")

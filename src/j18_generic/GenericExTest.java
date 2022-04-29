@@ -1,6 +1,5 @@
 package j18_generic;
 
-
 public class GenericExTest{
 
     public static void main(String[] args) {

@@ -1,10 +1,11 @@
 package j17_최상위클래스.config;
-
+import lombok.Getter;
 import java.util.Scanner;
 
 import j17_최상위클래스.controller.MainController;
 import j17_최상위클래스.repository.UserArray;
 import j17_최상위클래스.service.UserServicelmpl;
+import lombok.Getter;
 
 @Getter
 // @Setter는 있으면 안됌 설정은

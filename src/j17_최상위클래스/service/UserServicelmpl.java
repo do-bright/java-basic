@@ -1,9 +1,11 @@
 package j17_최상위클래스.service;
-
+import lombok.RequiredArgsConstructor;
+import lombok.Builder;
 import java.util.Scanner;
 
 import j17_최상위클래스.repository.UserArray;
 import j17_최상위클래스.repository.user.User;
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class UserServicelmpl implements UserService {
