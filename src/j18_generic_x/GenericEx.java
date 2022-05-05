@@ -1,4 +1,4 @@
-package j18_generic;
+package j18_generic_x;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

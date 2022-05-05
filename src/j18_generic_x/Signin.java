@@ -1,4 +1,4 @@
-package j18_generic;
+package j18_generic_x;
 import j17_최상위클래스.repository.user.User;
 import lombok.Getter;
 

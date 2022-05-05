@@ -1,34 +1,27 @@
 package j17_최상위클래스.main;
 
-import j17_최상위클래스.config.Context;
 import java.util.Scanner;
-import java.util.concurrent.Flow.Subscription;
-
+import j17_최상위클래스.config.Context;
 import j17_최상위클래스.controller.MainController;
 
 public class MainApplication {
-
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         Context context = Context.getInstance();
-        MainController mainController = context.getMainController();
-        mainController.signup();
-        mainController.showUserAll();
-        mainController.searchUser();
-
-        Scanner scanner = context.getScanner();
+		MainController mainController = context.getMainController(); 
+		Scanner scanner = context.getScanner();
 
         while(true){
-        System.out.println("[사용자 관리 프로그램]");
-        System.out.println("1. 회원가입");
-        System.out.println("2. 로그인");
-        System.out.println("3. 전체 사용자 조회");
-        System.out.println("4. 사용자 검색");
-        System.out.println("q. 프로그램 종료");
+        	System.out.println("[사용자 관리 프로그램]");
+        	System.out.println("1. 회원가입");
+        	System.out.println("2. 로그인");
+        	System.out.println("3. 전체 사용자 조회");
+        	System.out.println("4. 사용자 검색");
+        	System.out.println("q. 프로그램 종료");
 
-        System.out.print("서비스를 선택해주세요 :");
-        String select = scanner.nextLine();
+        	System.out.print("서비스를 선택해주세요 :");
+        	String select = scanner.nextLine();
 
-            if(select.equals("1")){
+			if(select.equals("1")){
                 mainController.signup();
             }else if(select.equals("2")){
                 mainController.signin();
@@ -55,7 +48,5 @@ public class MainApplication {
             System.out.println();
         }
         System.out.println("프로그램 종료");
-
-    }
-
+	}
 }

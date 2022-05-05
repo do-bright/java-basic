@@ -4,29 +4,35 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+//import lombok.NoArgsConstructor;
+//import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @Builder
+// @NoArgsConstructor // 기본생성자
 @RequiredArgsConstructor
-@NoArgsConstructor // 기본생성자
 @AllArgsConstructor // 전체 생성자
 @Getter
 @Setter
 @EqualsAndHashCode //
 @ToString
-
 public class Academy {
+//	@NonNull
     private final String name;
+//	@NonNull
     private final String address;
-    private final String subject;
-    private final String age;
+    private String subject;
 
-    // final + NoArgsConstructor 같이 사용 X
+    // 비면 안되는 변수에
+    // 1. @NonNull 달아주기 + NoArgs
+    // 2. 변수에 final 붙여주기 NoArgs X
+    // final = 상수라 초기화가 필요, NoArgs를 쓰면 초기화를 안해줌)
     // final 쓰면 기본생성자 사용 못함 전체생성자로 접근해야 함
 
+    /* lombok 사용 전 
     // import java.util.Objects;
 
     // public class Academy {
@@ -87,4 +93,6 @@ public class Academy {
     // return "Academy [name=" + name + ",address=" + address + ", subject=" +
     // subject + "]";
     // }
+     * 
+     */
 }

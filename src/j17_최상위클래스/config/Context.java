@@ -1,19 +1,18 @@
 package j17_최상위클래스.config;
-import lombok.Getter;
 import java.util.Scanner;
-
-import j17_최상위클래스.controller.MainController;
-import j17_최상위클래스.repository.UserArray;
-import j17_최상위클래스.service.UserServicelmpl;
 import lombok.Getter;
+import j17_최상위클래스.controller.MainController;
+import j17_최상위클래스.service.UserService;
+import j17_최상위클래스.service.UserServicelmpl;
+import j17_최상위클래스.repository.UserArray;
 
+// @Setter는 있으면 안됌 설정은 여기서
 @Getter
-// @Setter는 있으면 안됌 설정은
 public class Context {
     private static Context instance;
-    private Scanner scanner;
-    private MainController mainController;
-    private UserService userService;
+	private final Scanner scanner; 
+	private final MainController mainController;
+	private final UserService userService;
 
     private Context() {
         // 일반 객체
@@ -33,10 +32,6 @@ public class Context {
             instance = new Context();
         }
         return instance;
-    }
-
-    public Scanner getScanner() {
-        return null;
     }
 
 }

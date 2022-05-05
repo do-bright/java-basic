@@ -1,4 +1,4 @@
-package student;
+package j19_collection_.student;
 import java.util.Scanner;
 
 public class StudentServiceImpl implements StudentService{

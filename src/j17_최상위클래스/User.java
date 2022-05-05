@@ -71,10 +71,11 @@ public class User {
             return false;
         if(getClass()!=obj.getClass()) // 3. 파일 자체가 틀리면 
             return false;
-        // User other = (User) obj; // obj를 다운캐스팅 아래 return 과 같이 쓸 때 사용
+        // User other = (User) obj; // obj를 다운캐스팅 아래 주석한 return 과 같이 쓸 때 사용
         // return Object.equals(email,other.email) && Object.equals(name,other.name) 
         // && Object.equals(password,other.password) && usercode == other.usercode 
         // && Object.equals(username,other.username);
+        
         // equals랑 hashcode는 항상 같이 움직임 아래 코드와 동일 
         return this.hashCode() == obj.hashCode();
     }
