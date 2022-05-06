@@ -1,16 +1,17 @@
 package j17_최상위클래스.service;
+import java.util.Scanner;
+
 import j17_최상위클래스.repository.UserArray;
 import j17_최상위클래스.repository.user.User;
 import lombok.RequiredArgsConstructor;
-import lombok.Builder;
-import java.util.Scanner;
 
 
 @RequiredArgsConstructor
 public class UserServicelmpl implements UserService {
 	private final UserArray userArray;
 		
-    @Override
+
+	@Override
     public User loginUser(Scanner scanner) {
 		String username, password;
 		System.out.println("[로그인]");
@@ -77,5 +78,6 @@ public class UserServicelmpl implements UserService {
     public User[] getUserAll() {
         return userArray.getuserArray();
     }
+
 
 }

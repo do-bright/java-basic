@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 public class MainController {
 	
 	private final UserService userService;
-	
+
 	public void signup(){
 		User user = userService.addUser(Context.getInstance().getScanner());
         System.out.println("[추가된 사용자 정보]");

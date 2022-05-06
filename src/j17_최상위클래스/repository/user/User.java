@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+
 // 엔티티를 위한 어노테이션
 @Builder
 @NoArgsConstructor
@@ -17,6 +18,7 @@ public class User {
     private String password;
     private String name;
     private String email;
+
 
 //  @Builder annotation으로 대체 
 //    public static User builder() {

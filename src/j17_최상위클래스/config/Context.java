@@ -1,12 +1,14 @@
 package j17_최상위클래스.config;
 import java.util.Scanner;
-import lombok.Getter;
+
 import j17_최상위클래스.controller.MainController;
+import j17_최상위클래스.repository.UserArray;
 import j17_최상위클래스.service.UserService;
 import j17_최상위클래스.service.UserServicelmpl;
-import j17_최상위클래스.repository.UserArray;
+import lombok.Getter;
 
 // @Setter는 있으면 안됌 설정은 여기서
+
 @Getter
 public class Context {
     private static Context instance;
@@ -33,5 +35,6 @@ public class Context {
         }
         return instance;
     }
+
 
 }
