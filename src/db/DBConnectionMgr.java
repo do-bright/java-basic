@@ -24,9 +24,13 @@ package db;
  * TO THE SOFTWARE.
  *
  */
-
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 import java.util.Vector;
 
@@ -39,10 +43,11 @@ import java.util.Vector;
 public class DBConnectionMgr {
 
     private Vector connections = new Vector(10);
-    private String _driver = "org.gjt.mm.mysql.Driver",
-    _url = "jdbc:mysql://127.0.0.1:80/java?useUnicode=true&characterEncoding=EUC_KR",
+    // 연결된 객체들이 저장됌 (최대 10개)
+    private String _driver = "com.mysql.cj.jdbc.Driver", // 드라이브 적용함 
+    _url = "jdbc:mysql://127.0.0.1:3306/java_dobright?useUnicode=true&characterEncoding=UTF-8&severTimezone=UTC&useSSL=false", // DB 접속하기 위한 경로 
     _user = "root",
-    _password = "toor";
+    _password = "";
     
     private boolean _traceOn = false;
     private boolean initialized = false;
@@ -57,10 +62,10 @@ public class DBConnectionMgr {
      */
 
     public static DBConnectionMgr getInstance() {
-        if (instance == null) {
-            synchronized (DBConnectionMgr.class) {
-                if (instance == null) {
-                    instance = new DBConnectionMgr();
+        if (instance == null) { 
+            synchronized (DBConnectionMgr.class) { // 스레드 관련 동기화
+                if (instance == null) { 
+                    instance = new DBConnectionMgr(); // null 이면 생성함 
                 }
             }
         }
@@ -111,7 +116,10 @@ public class DBConnectionMgr {
             throws Exception {
         if (!initialized) {
             Class c = Class.forName(_driver);
-            DriverManager.registerDriver((Driver) c.newInstance());
+            DriverManager.registerDriver((Driver) c.newInstance()); 
+            // 드라이버매니저 ; 연결 하는 핵심 요소
+            // 이것만 바꿔주면 mysql mariadb... 구별 안 해도 통합적으로 사용가능
+            
 
             initialized = true;
         }
@@ -153,8 +161,8 @@ public class DBConnectionMgr {
 
         if (c == null) {
             c = createConnection();
-            co = new ConnectionObject(c, true);
-            connections.addElement(co);
+            co = new ConnectionObject(c, true); // 커넥션 객체 만들고 넣어줌
+            connections.addElement(co); // array.add 와 유사
 
             trace("ConnectionPoolManager: Creating new DB connection #" + connections.size());
         }
@@ -164,7 +172,7 @@ public class DBConnectionMgr {
 
 
     /** Marks a flag in the ConnectionObject to indicate this connection is no longer in use */
-    public synchronized void freeConnection(Connection c) {
+    public synchronized void freeConnection(Connection c) { // 데베 다쓰고 반납
         if (c == null)
             return;
 
@@ -181,7 +189,7 @@ public class DBConnectionMgr {
         for (int i = 0; i < connections.size(); i++) {
             co = (ConnectionObject) connections.elementAt(i);
             if ((i + 1) > _openConnections && !co.inUse)
-                removeConnection(co.connection);
+                removeConnection(co.connection); // 제거
         }
     }
 
@@ -207,7 +215,7 @@ public class DBConnectionMgr {
 
     public void freeConnection(Connection c, PreparedStatement p) {
         try {
-            if (p != null) p.close();
+            if (p != null) p.close(); // freeconnection 할 때마다 close ; 객체 소멸
             freeConnection(c);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -216,7 +224,7 @@ public class DBConnectionMgr {
 
     public void freeConnection(Connection c, Statement s) {
         try {
-            if (s != null) s.close();
+            if (s != null) s.close(); // close ; 객체 소멸
             freeConnection(c);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -225,7 +233,7 @@ public class DBConnectionMgr {
 
 
     /** Marks a flag in the ConnectionObject to indicate this connection is no longer in use */
-    public synchronized void removeConnection(Connection c) {
+    public synchronized void removeConnection(Connection c) { // 데이터베이스 다 쓰고 반납 
         if (c == null)
             return;
 
@@ -235,7 +243,7 @@ public class DBConnectionMgr {
             if (c == co.connection) {
                 try {
                     c.close();
-                    connections.removeElementAt(i);
+                    connections.removeElementAt(i); // 제거할 해당 인덱스(i) 찾고 remove
                     trace("Removed " + c.toString());
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -286,7 +294,8 @@ public class DBConnectionMgr {
 
 
     /** Closes all connections and clears out the connection pool */
-    public void finalize() {
+    @Override
+	public void finalize() {
         trace("ConnectionPoolManager.finalize()");
 
         Connection c = null;
